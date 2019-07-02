@@ -1,0 +1,71 @@
+<html>
+
+<head>
+  <title>Express</title>
+  <link rel="stylesheet" href="/stylesheets/style.css">
+</head>
+
+<script src="modules/axios/dist/axios.min.js"></script>
+
+
+<body>
+  <h1>Express</h1>
+  <p>Welcome to Express</p>
+  <table>
+    <thead>
+      <tr>
+        <th>Title</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody id="todos">
+      <tr>
+        <td>January</td>
+        <td>$100</td>
+      </tr>
+      <tr>
+        <td>February</td>
+        <td>$80</td>
+      </tr>
+    </tbody>
+    <tfoot>
+  </table>
+  <script>
+    const axios = require('axios');
+    var txt = "";
+    var response = {
+      "todos": [{
+          "title": "this is a todo list",
+          "description": "this is a description 1"
+        },
+        {
+          "title": "this is a todo list",
+          "description": "this is a description 2"
+        },
+        {
+          "title": "this is a todo list",
+          "description": "this is a description 3"
+        },
+        {i
+          "title": "this is a todo lst",
+          "description": "this is a description 4"
+        }
+      ]
+    }
+    function deleteElement(index){
+      response.todos.splice(index,1);
+      update();
+    }
+    function update() {
+      txt="";
+      for (let x in response.todos) {
+        txt += "<tr><td>" + response.todos[x]["title"] + "</td><td>" + response.todos[x]["description"] +
+          "</td><td><button type=\"button\">edit " + x + "</button></td><td><button type=\"button\" onClick=\"deleteElement(" + x + ")\">delete</button></td></tr>";
+      }
+      document.getElementById("todos").innerHTML = txt;
+    }
+    update();
+  </script>
+</body>
+
+</html>
